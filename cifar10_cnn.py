@@ -39,7 +39,7 @@ y_test = keras.utils.to_categorical(y_test, num_classes)
 
 model = Sequential()
 model.add(QConv2D(32, (3, 3), padding='same',
-                 input_shape=x_train.shape[1:]))
+                  input_shape=x_train.shape[1:]))
 model.add(Activation('relu'))
 model.add(QConv2D(32, (3, 3)))
 model.add(Activation('relu'))
@@ -89,9 +89,12 @@ else:
         featurewise_std_normalization=False,  # divide inputs by std of the dataset
         samplewise_std_normalization=False,  # divide each input by its std
         zca_whitening=False,  # apply ZCA whitening
-        rotation_range=0,  # randomly rotate images in the range (degrees, 0 to 180)
-        width_shift_range=0.1,  # randomly shift images horizontally (fraction of total width)
-        height_shift_range=0.1,  # randomly shift images vertically (fraction of total height)
+        # randomly rotate images in the range (degrees, 0 to 180)
+        rotation_range=0,
+        # randomly shift images horizontally (fraction of total width)
+        width_shift_range=0.1,
+        # randomly shift images vertically (fraction of total height)
+        height_shift_range=0.1,
         horizontal_flip=True,  # randomly flip images
         vertical_flip=False)  # randomly flip images
 
