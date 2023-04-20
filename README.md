@@ -24,18 +24,17 @@ The data has been obtained using the CIFAR public dataset from the pytorch datas
 Some data pre-processing steps were taken for both the CNN and the QCNN. For the quaternion CNN, a zero matrix is concatenated to each matrix in the original dataset, such that it becomes a four-dimensional matrix. The pre-processing step is shown in the following codesnippet. 
 
 
-def convert_to_quaternion(batch):
-  new_batch = torch.empty(len(batch), 4, 32, 32)
-  labels = torch.LongTensor(len(batch))
+  def convert_to_quaternion(batch):
+    new_batch = torch.empty(len(batch), 4, 32, 32)
+    labels = torch.LongTensor(len(batch))
 
 
-  # Transform images to quaternion matrices
-  for i in range(len(batch)):
-    image, label = batch[i][0], batch[i][1]
-    real = torch.zeros(32, 32)
-    new_image = torch.cat((image, real.unsqueeze(0)), dim=0)
-    new_batch[i, :, :, :] = new_image
-    labels[i] = label
+    for i in range(len(batch)):
+      image, label = batch[i][0], batch[i][1]
+      real = torch.zeros(32, 32)
+      new_image = torch.cat((image, real.unsqueeze(0)), dim=0)
+      new_batch[i, :, :, :] = new_image
+      labels[i] = label
 
 
   return new_batch, labels
