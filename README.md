@@ -38,12 +38,13 @@ return new_batch, labels
 ```
 
 As explained in the paper, a transform of the input data is used to boost the performance of the networks. In the paper they describe that they use both shifting and flipping of the input data, which we have then also done using the transform below. The provided code corresponding to this paper only takes into account a horizontal flip and a shift of 0.1, which we have copied as such for our code.
-
-  transform = transforms.Compose([
-      transforms.ToTensor(),
-      transforms.RandomAffine(degrees = 0, translate = (0.1, 0.1)),
-      transforms.RandomHorizontalFlip(0.5)
-  ])
+```
+transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.RandomAffine(degrees = 0, translate = (0.1, 0.1)),
+    transforms.RandomHorizontalFlip(0.5)
+])
+```
 
 # Creating the models
 To reproduce the results of the paper we need two separate models. First, we need to create a regular CNN, which will function as the baseline for our experiment. Then, we need to recreate the quaternion CNN described in the paper. We base our implementation on the two given repositories on github provided to us: 
@@ -364,18 +365,6 @@ Another difference between the repository and the paper is the way that the weig
 If we look back at the process we went through to reproduce the results, we can make some comments on the difficulty to reproduce the paper. Firstly, we appreciated that the authors made their code available for others. However, this code was out-of-date due to an old version of Tensorflow. This, of course, makes it harder for others to reproduce. We would therefore like to suggest others to keep their code up-to-date, such that others will always be able to easily reproduce it. We would also like to add that it would have been useful if the authors had provided the code used for the experiments. This way there would have been no confusion whether the implementation of the experiments was correct. One small thing we would also like to add is that some hyperparameters were not clearly defined in the paper. For example, the learning rate decay was given as a constant, but it was not defined how this constant should be used to decay the learning rate.
 
 To conclude, we were not able to reproduce the results mentioned in the paper ‘Quaternion Convolutional Neural Networks’. Our baseline implementation was on-par with the baseline mentioned in the paper. However, the QCNN performed significantly worse than presented in the paper. This is probably caused by a difference in implementation of the quaternion layers between the two github repositories used by us.
-
-
-
-
-
-
-
-
-
-
-
-
 
 # References
 Mattioli, G. (2023, February 10). CIFAR10 Image Classification in PyTorch | by Gabriele Mattioli | MLearning.ai. Medium. https://medium.com/mlearning-ai/cifar10-image-classification-in-pytorch-e5185176fbef
