@@ -2,7 +2,7 @@
 # Reimplementation of Quaternion convolutional neural networks
 _Made by group 43, Rens Oude Elferink & Douwe Mulder_
 
-
+![CNN Model](/images/model.png)
 
 # Introduction
 This post writes about our reproduction of the paper "Quaternion convolutional neural networks", by X. Zhu et al [link](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html).
@@ -84,6 +84,7 @@ Softmax\
 The summary of the model looks like the following:
 
 ![CNN Model](/images/model_rgb.png)
+![CNN Model](/images/model_summary_cnn.png)
 
 
 As can be seen, only the linear layers 1 and 7 have padding. The following code shows the implementation of this model.
@@ -173,7 +174,9 @@ class CNN(nn.Module):
 ## Quaternion CNN
 The quaternion CNN (QCNN) was heavily based on the works mentioned in this [github](https://github.com/heblol/Pytorch-Quaternion-Neural-Networks/blob/master/core_qnn/quaternion_layers.py) and this [github](https://github.com/XYZ387/QuaternionCNN_Keras/blob/master/cifar10_cnn.py). The QCNN layers from the first github were used in the reproduction and were assumed to have a correct implementation. The model of the second github is used to implement the QCNN.
 
-The order of the layers is similar to the baseline CNN, but differs in type of layers. Where the CNN uses regular convolutional layers, the QCNN uses quaternion convolutional layers. Additionally, where the CNN uses a regular linear layer, one of these layers is changed to a quaternion linear layer, as given in the quaternion model in the github.
+The order of the layers is similar to the baseline CNN, but differs in type of layers. Where the CNN uses regular convolutional layers, the QCNN uses quaternion convolutional layers. Additionally, where the CNN uses a regular linear layer, one of these layers is changed to a quaternion linear layer, as given in the quaternion model in the github. The model is shown below:
+
+![QCNN Model](/images/model.png)
 
 The following codesnippet describes the implementation of the QCNN.
 
@@ -330,25 +333,14 @@ Training was done in batches of 32, with 80 epoch, learning rate of 0.0001. This
 # Results / Evaluation
 This section describes the results obtained by us using the described models. In addition, this section compares our results with the results from the original paper. After running the models, we got the results given in the figure below.
 
-
-
-
-
-
-
-Training loss in paper (above) and in our experiments (below).
-
-Test accuracy in paper (above) and in our experiments (below).
-
-
-
+![Figures](/images/figures_qcnn_training.PNG)
 
 In this figure we can see that the training loss learning curve in the paper is much steeper than the curve obtained in our experiments. Moreover, the final obtained loss is much lower in the paper than in our experiments. What is curious to note about this is that even though the loss is much higher, the accuracy remains similar to the paper. 
 
 The two figures on the right show the accuracies obtained by us (figure below) and by the paper (figure above). Here it can be seen that the baseline models perform similarly, while the QCNN in our experiment performs much worse than in the paper. The testing accuracies of the paper and our experiment are given below.
 
-
-
+![Paper accuracies](/images/res_paper.png)
+![Experiment accuracies](/images/res_experiments.png)
 
 
 These tables show that our baseline works better than the baseline in the paper, with a difference of almost 2 percentage-points. The QCNN implemented by us performs worse than the QCNN in the paper, with a difference of over 7 percentage-points.
