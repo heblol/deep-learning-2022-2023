@@ -56,29 +56,29 @@ This section provides the details for the implementations of the two models.
 ## Baseline CNN
 The baseline CNN, referred to as the "real-valued CNN" in the original report is implemented using a pytorch implementation and it follows the paper's implementation. In the github repository no code for a real-valued CNN was provided. Therefore, most details had to be subtracted from the paper. However, in this paper some details were not discussed in the paper itself, thus had to be taken from the repository of the QCNN model. This included the dropout, ReLu, padding and channel dimensions. For the first and second convolutional layers, the channels were set to 32. For the third and fourth convolutional layers, the size was set to 64. In the report the output size for the 13th layer (the linear layer just after flattening) was set to 512, but the input size was not defined. We calculated that this had to be size 2304. Also note that, similar to the given repository, only the convolutional layers 1 and 7 include padding.
 
-It has the following layers:
-**Convolutional block 1**
-Convolutional layer
-ReLU
-Convolutional layer
-ReLu
-MaxPool
-Dropout (25%)
-**Convolutional block 2**
-Convolutional layer
-ReLU
-Convolutional layer
-ReLu
-MaxPool
-Dropout (25%)
+It has the following layers:\
+**Convolutional block 1**\
+Convolutional layer\
+ReLU\
+Convolutional layer\
+ReLu\
+MaxPool\
+Dropout (25%)\
+**Convolutional block 2**\
+Convolutional layer\
+ReLU\
+Convolutional layer\
+ReLu\
+MaxPool\
+Dropout (25%)\
 
-**Linear Block**
-Flatten
-Linear layer
-ReLU
-Dropout (50%)
-Linear layer
-Softmax
+**Linear Block**\
+Flatten\
+Linear layer\
+ReLU\
+Dropout (50%)\
+Linear layer\
+Softmax\
 
 The summary of the model looks like the following:
 
