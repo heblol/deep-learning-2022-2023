@@ -176,7 +176,7 @@ The quaternion CNN (QCNN) was heavily based on the works mentioned in this [gith
 
 The order of the layers is similar to the baseline CNN, but differs in type of layers. Where the CNN uses regular convolutional layers, the QCNN uses quaternion convolutional layers. Additionally, where the CNN uses a regular linear layer, one of these layers is changed to a quaternion linear layer, as given in the quaternion model in the github. The model is shown below:
 
-![QCNN Model](/images/model.png)
+![QCNN Model](/images/model1.png)
 
 The following codesnippet describes the implementation of the QCNN.
 
