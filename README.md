@@ -27,25 +27,22 @@ Some data pre-processing steps were taken for both the CNN and the QCNN. For the
   def convert_to_quaternion(batch):
     new_batch = torch.empty(len(batch), 4, 32, 32)
     labels = torch.LongTensor(len(batch))
-
-
+    
     for i in range(len(batch)):
       image, label = batch[i][0], batch[i][1]
       real = torch.zeros(32, 32)
       new_image = torch.cat((image, real.unsqueeze(0)), dim=0)
       new_batch[i, :, :, :] = new_image
       labels[i] = label
-
-
   return new_batch, labels
 
 As explained in the paper, a transform of the input data is used to boost the performance of the networks. In the paper they describe that they use both shifting and flipping of the input data, which we have then also done using the transform below. The provided code corresponding to this paper only takes into account a horizontal flip and a shift of 0.1, which we have copied as such for our code.
 
-transform = transforms.Compose([
-    transforms.ToTensor(),
-    transforms.RandomAffine(degrees = 0, translate = (0.1, 0.1)),
-    transforms.RandomHorizontalFlip(0.5)
-])
+  transform = transforms.Compose([
+      transforms.ToTensor(),
+      transforms.RandomAffine(degrees = 0, translate = (0.1, 0.1)),
+      transforms.RandomHorizontalFlip(0.5)
+  ])
 
 # Creating the models
 To reproduce the results of the paper we need two separate models. First, we need to create a regular CNN, which will function as the baseline for our experiment. Then, we need to recreate the quaternion CNN described in the paper. We base our implementation on the two given repositories on github provided to us: 
@@ -53,18 +50,19 @@ https://github.com/Orkis-Research/Pytorch-Quaternion-Neural-Networks/blob/master
 https://github.com/XYZ387/QuaternionCNN_Keras/blob/master/cifar10_cnn.py)
 The first github is a more general quaternion github with the quaternion layers defined in pytorch. In this github an exact QCNN model is missing. In the next github a QCNN model is built and also an experiment is set up with CIFAR-10. However, this depository was written in keras and therefore not duplicatable for out pytorch code. Apart from these githubs we used several sources for similar CIFAR-10 CNN’s. ( Mattioli, G., 2023 February 10)(M, S. 2022). 
 This section provides the details for the implementations of the two models.
+
 ## Baseline CNN
 The baseline CNN, referred to as the "real-valued CNN" in the original report is implemented using a pytorch implementation and it follows the paper's implementation. In the github repository no code for a real-valued CNN was provided. Therefore, most details had to be subtracted from the paper. However, in this paper some details were not discussed in the paper itself, thus had to be taken from the repository of the QCNN model. This included the dropout, ReLu, padding and channel dimensions. For the first and second convolutional layers, the channels were set to 32. For the third and fourth convolutional layers, the size was set to 64. In the report the output size for the 13th layer (the linear layer just after flattening) was set to 512, but the input size was not defined. We calculated that this had to be size 2304. Also note that, similar to the given repository, only the convolutional layers 1 and 7 include padding.
 
 It has the following layers:
-Convolutional block 1
+**Convolutional block 1**
 Convolutional layer
 ReLU
 Convolutional layer
 ReLu
 MaxPool
 Dropout (25%)
-Convolutional block 2
+**Convolutional block 2**
 Convolutional layer
 ReLU
 Convolutional layer
@@ -72,6 +70,7 @@ ReLu
 MaxPool
 Dropout (25%)
 
+**Linear Block**
 Flatten
 Linear layer
 ReLU
