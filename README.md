@@ -1,6 +1,10 @@
 
 # Reimplementation of Quaternion convolutional neural networks
-_Made by group 43, Rens Oude Elferink & Douwe Mulder_
+_Made by group 43, Rens Oude Elferink (r.g.oudeelferink@student.tudelft.nl, 4708148) & Douwe Mulder (d.c.mulder@student.tudelft.nl, 4722647)_
+
+# Contributions
+- Douwe: implementation of the real-valued CNN, running experiments on Google cloud, writing on the blog
+- Rens: implementation of the QCNN, writing the blog, analysis of results
 
 ![CNN Model](/images/model1.png)
 
