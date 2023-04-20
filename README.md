@@ -83,7 +83,7 @@ Softmax\
 
 The summary of the model looks like the following:
 
-[CNN Model](/images/model_rgb.png)
+![CNN Model](/images/model_rgb.png)
 
 
 As can be seen, only the linear layers 1 and 7 have padding. The following code shows the implementation of this model.
