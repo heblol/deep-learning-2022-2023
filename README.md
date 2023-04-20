@@ -2,7 +2,7 @@
 # Reimplementation of Quaternion convolutional neural networks
 _Made by group 43, Rens Oude Elferink & Douwe Mulder_
 
-![CNN Model](/images/model.png)
+![CNN Model](/images/model1.png)
 
 # Introduction
 This post writes about our reproduction of the paper "Quaternion convolutional neural networks", by X. Zhu et al [link](http://openaccess.thecvf.com/content_ECCV_2018/html/Xuanyu_Zhu_Quaternion_Convolutional_Neural_ECCV_2018_paper.html).
