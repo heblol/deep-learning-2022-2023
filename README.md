@@ -48,8 +48,8 @@ transform = transforms.Compose([
 
 # Creating the models
 To reproduce the results of the paper we need two separate models. First, we need to create a regular CNN, which will function as the baseline for our experiment. Then, we need to recreate the quaternion CNN described in the paper. We base our implementation on the two given repositories on github provided to us: 
-https://github.com/Orkis-Research/Pytorch-Quaternion-Neural-Networks/blob/master/core_qnn/quaternion_ops.py
-https://github.com/XYZ387/QuaternionCNN_Keras/blob/master/cifar10_cnn.py)
+- https://github.com/Orkis-Research/Pytorch-Quaternion-Neural-Networks/blob/master/core_qnn/quaternion_ops.py
+- https://github.com/XYZ387/QuaternionCNN_Keras/blob/master/cifar10_cnn.py)
 The first github is a more general quaternion github with the quaternion layers defined in pytorch. In this github an exact QCNN model is missing. In the next github a QCNN model is built and also an experiment is set up with CIFAR-10. However, this depository was written in keras and therefore not duplicatable for out pytorch code. Apart from these githubs we used several sources for similar CIFAR-10 CNN’s. ( Mattioli, G., 2023 February 10)(M, S. 2022). 
 This section provides the details for the implementations of the two models.
 
