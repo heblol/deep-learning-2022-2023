@@ -63,14 +63,15 @@ ReLU\
 Convolutional layer\
 ReLu\
 MaxPool\
-Dropout (25%)\
+Dropout (25%)
+
 **Convolutional block 2**\
 Convolutional layer\
 ReLU\
 Convolutional layer\
 ReLu\
 MaxPool\
-Dropout (25%)\
+Dropout (25%)
 
 **Linear Block**\
 Flatten\
