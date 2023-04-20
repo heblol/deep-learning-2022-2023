@@ -23,7 +23,7 @@ The data has been obtained using the CIFAR public dataset from the pytorch datas
 
 Some data pre-processing steps were taken for both the CNN and the QCNN. For the quaternion CNN, a zero matrix is concatenated to each matrix in the original dataset, such that it becomes a four-dimensional matrix. The pre-processing step is shown in the following codesnippet. 
 
-
+'''
   def convert_to_quaternion(batch):
     new_batch = torch.empty(len(batch), 4, 32, 32)
     labels = torch.LongTensor(len(batch))
@@ -35,6 +35,7 @@ Some data pre-processing steps were taken for both the CNN and the QCNN. For the
       new_batch[i, :, :, :] = new_image
       labels[i] = label
   return new_batch, labels
+'''
 
 As explained in the paper, a transform of the input data is used to boost the performance of the networks. In the paper they describe that they use both shifting and flipping of the input data, which we have then also done using the transform below. The provided code corresponding to this paper only takes into account a horizontal flip and a shift of 0.1, which we have copied as such for our code.
 
